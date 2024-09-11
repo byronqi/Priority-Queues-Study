@@ -208,8 +208,6 @@ class PriorityQueue(Generic[T]):
         index = 0
         tree_len = self.my_tree.__len__()
         while self.in_bounds(index):
-            # ----------------------
-            # TODO: You'll be writing this part! Insert your code here.
             for i in range(tree_len):
                 if self.has_left_child(i) and self.has_right_child(i):
                     left_has_priority = self.a_has_priority_over_b(self.my_tree[self.left_child_of_index(i)],
@@ -222,7 +220,6 @@ class PriorityQueue(Generic[T]):
                     if self.a_has_priority_over_b(self.my_tree[self.left_child_of_index(i)],
                                                   self.my_tree[i]):
                         return False
-            # ----------------------
             index += 1
         logging.info("This is a heap.")
         return True
@@ -250,9 +247,6 @@ class PriorityQueue(Generic[T]):
         :return None:
         """
         pass
-        # ----------------------
-        # TODO: You'll be writing this part! Insert your code here.
-
         while index is not 0:
             current_node: "Node" = self.node_at_index(index)
             parent_node: "Node" = self.node_at_index(self.parent_of_index(index))
@@ -318,8 +312,6 @@ class PriorityQueue(Generic[T]):
         left_index: int = self.left_child_of_index(index)
         right_index: int = self.right_child_of_index(index)
         if self.in_bounds(left_index):
-            # ----------------------
-            # TODO: You'll be writing this part! Insert your code here.
             if self.has_right_child(index):
                 right_node = self.node_at_index(right_index)
                 left_node = self.node_at_index(left_index)
@@ -343,6 +335,5 @@ class PriorityQueue(Generic[T]):
                     self.set_node_at_index(current_node, left_index)
                     # recursive call for left index
                     self.heapify_down(self.left_child_of_index(index))
-            # ----------------------
         # Since this tree is complete, we don't need to worry about the right node if the
         # left node was out of bounds.
